@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineVault — Discover Movies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <a class="nav-logo" href="#" aria-label="CineVault home">Cine<span>Vault</span></a>
+
+    <div class="nav-genres" role="list" aria-label="Browse by genre">
+      <a class="nav-genre-link" data-genre="Action"       href="#genre-filter" role="listitem">Action</a>
+      <a class="nav-genre-link" data-genre="Comedy"       href="#genre-filter" role="listitem">Comedy</a>
+      <a class="nav-genre-link" data-genre="Drama"        href="#genre-filter" role="listitem">Drama</a>
+      <a class="nav-genre-link" data-genre="Sci-Fi"       href="#genre-filter" role="listitem">Sci-Fi</a>
+      <a class="nav-genre-link" data-genre="Horror"       href="#genre-filter" role="listitem">Horror</a>
+      <a class="nav-genre-link" data-genre="Fantasy"      href="#genre-filter" role="listitem">Fantasy</a>
+      <a class="nav-genre-link" data-genre="Documentary"  href="#genre-filter" role="listitem">Documentary</a>
+      <a class="nav-genre-link" data-genre="Thriller"     href="#genre-filter" role="listitem">Thriller</a>
+    </div>
+
+    <div class="nav-right">
+      <div class="search-wrap" role="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Titles, genres, cast…"
+          autocomplete="off"
+          aria-label="Search movies"
+        >
+        <div id="search-results" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+      <button class="user-icon-btn" aria-label="User account">👤</button>
+    </div>
+  </nav>
+
+  <!-- ── Hero Banner ────────────────────────────────────────────────────── -->
+  <section id="hero" aria-label="Featured movie">
+    <div class="hero-gradient" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Featured Film</p>
+      <h1 id="hero-title"></h1>
+      <p id="hero-meta"></p>
+      <p id="hero-genres"></p>
+      <p id="hero-synopsis"></p>
+      <div class="hero-buttons">
+        <button id="hero-play" class="btn-primary">▶ Play Now</button>
+        <button id="hero-info" class="btn-secondary">ℹ More Info</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Main Content ───────────────────────────────────────────────────── -->
+  <main id="main-content">
+
+    <!-- Watchlist (shown only when non-empty) -->
+    <section id="watchlist-section" aria-label="My watchlist">
+      <div class="row-header">
+        <h2 class="row-label">
+          🎬 My Watchlist
+          <span class="watchlist-badge" id="watchlist-count">0</span>
+        </h2>
+      </div>
+      <div class="row-container">
+        <button class="scroll-btn scroll-left" aria-label="Scroll watchlist left">&#8249;</button>
+        <div class="row-track" id="watchlist-track" aria-label="Watchlist movies"></div>
+        <button class="scroll-btn scroll-right" aria-label="Scroll watchlist right">&#8250;</button>
+      </div>
+    </section>
+
+    <!-- Movie Rows (Trending / New Releases / Top 10 Today / Top Rated) -->
+    <section id="rows" aria-label="Movie categories"></section>
+
+    <!-- Genre Filter -->
+    <section id="genre-filter" aria-label="Browse by genre">
+      <p class="genre-section-title">Browse by Genre</p>
+      <div id="genre-pills" role="group" aria-label="Genre filter buttons"></div>
+    </section>
+
+    <!-- Filtered Grid -->
+    <section id="filtered-section" aria-live="polite">
+      <h2 id="filtered-heading"></h2>
+      <div id="filtered-grid" role="list"></div>
+    </section>
+
+  </main>
+
+  <!-- ── Detail Modal ───────────────────────────────────────────────────── -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-inner" tabindex="-1">
+
+      <!-- Banner -->
+      <div class="modal-banner">
+        <img id="modal-banner-bg" class="modal-banner-bg" src="" alt="" aria-hidden="true">
+        <div class="modal-banner-gradient" aria-hidden="true"></div>
+        <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <img id="modal-poster" src="" alt="">
+
+        <div class="modal-details">
+          <h2 id="modal-title"></h2>
+
+          <div class="modal-meta-row">
+            <span class="modal-meta-item"><strong id="modal-year"></strong></span>
+            <span class="modal-meta-item">🕐 <strong id="modal-runtime"></strong></span>
+            <span class="modal-meta-item"><strong id="modal-rating"></strong></span>
+          </div>
+
+          <div id="modal-genres" aria-label="Genres"></div>
+
+          <p class="modal-section-label">Synopsis</p>
+          <p id="modal-synopsis"></p>
+
+          <p class="modal-section-label">Cast</p>
+          <div id="modal-cast" aria-label="Cast"></div>
+
+          <div class="modal-actions">
+            <button id="modal-wl-btn" class="btn-modal-wl wl-btn" aria-label="Add to watchlist">
+              <span class="wl-icon">+</span>
+              <span class="wl-label">Watchlist</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script defer src="script.js"></script>
+</body>
+</html>
